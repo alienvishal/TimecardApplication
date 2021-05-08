@@ -1,0 +1,50 @@
+﻿@model EmployeeViewModel
+
+
+
+<div class="jumbotron">
+    <form method="post" class="form-inline">
+        <div class="form-group mb-2">
+            <label for="staticEmail">Short ID</label>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label asp-for="EmployeeShortName" class="sr-only">Short ID</label>
+            <input asp-for="EmployeeShortName" class="form-control" placeholder="Short ID" />
+            <span asp-validation-for="EmployeeShortName" style="color:red"></span>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">CD</button>
+    </form>
+    @if (ViewBag.EmployeeName != null)
+    {
+        <hr />
+        @if (Model.EmpFirstName != null)
+        {
+            <b><i><center>Employee Details</center></i></b>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-10">
+                    <input asp-for="EmpFirstName" class="form-control-plaintext" readonly />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input asp-for="EmpLastName" class="form-control-plaintext" readonly />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Department</label>
+                <div class="col-sm-10">
+                    <input type="text" value="ITT/QIG" class="form-control-plaintext" readonly />
+                </div>
+            </div>
+            <a asp-action="FillTimeCard" asp-controller="Home" class="btn btn-primary">Fill TimeCard</a>
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                <strong>Warning !! </strong> @ViewBag.EmployeeName
+            </div>
+        }
+    }
+</div>
